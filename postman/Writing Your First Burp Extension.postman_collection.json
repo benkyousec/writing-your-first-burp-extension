@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "16003a9a-b780-4de3-8905-094f0d6dd70e",
+		"name": "Writing Your First Burp Extension",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45471629",
+		"_collection_link": "https://benkyou-71140.postman.co/workspace/benkyou's-Workspace~934ae58b-73c5-47ff-8106-ee9941731f61/collection/45471629-16003a9a-b780-4de3-8905-094f0d6dd70e?action=share&source=collection_link&creator=45471629"
+	},
+	"item": [
+		{
+			"name": "HelloWorld-v1",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "your_signature_here",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "data",
+									"value": "foobar",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Simple API that checks if requests are signed with SHA256 hash of body."
+		},
+		{
+			"name": "HelloWorld-v2",
+			"item": [
+				{
+					"name": "Get quotes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1337/quotes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"quotes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get quote (vulnerable to SQLi)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "your_signature_here",
+								"type": "text"
+							},
+							{
+								"key": "Timestamp",
+								"value": "02052024133409",
+								"type": "text"
+							},
+							{
+								"key": "Ref",
+								"value": "PT103082025000120",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1337/quote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"quote"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Let's add more complexity to our API :D\n\nRequirements:\n\n- Set `Timestamp` , `Ref`, and `Signature` custom headers\n    \n- `Timestamp` must be within 10 second timeframe when server receives request.\n    \n- Each request must have a unique `Ref` value, also identifies the person testing the API.\n    \n- Each request must be signed using API key and set the signature in `Signature` header."
+		},
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Signature",
+						"value": "your_signature_here",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "data",
+							"value": "foobar",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1337/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
