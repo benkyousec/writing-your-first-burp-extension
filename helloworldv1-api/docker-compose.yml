@@ -1,0 +1,7 @@
+services:
+  web:
+    # Build the image from the Dockerfile in the current directory
+    build: .
+    container_name: helloworld-v1
+    ports:
+      - "5000:5000"

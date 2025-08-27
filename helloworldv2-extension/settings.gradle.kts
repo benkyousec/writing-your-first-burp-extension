@@ -1,0 +1,1 @@
+rootProject.name = "helloworldv2-extension"
