@@ -16,10 +16,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/ping",
+							"raw": "http://192.168.0.192:5000/ping",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"0",
+								"192"
 							],
 							"port": "5000",
 							"path": [
@@ -54,10 +57,13 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:5000/test",
+							"raw": "http://192.168.0.192:5000/test",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"0",
+								"192"
 							],
 							"port": "5000",
 							"path": [
@@ -74,17 +80,32 @@
 			"name": "HelloWorld-v2",
 			"item": [
 				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/ping",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get quotes",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:1337/quotes",
-							"protocol": "http",
+							"raw": "{{baseURL}}/quotes",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "1337",
 							"path": [
 								"quotes"
 							]
@@ -123,12 +144,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:1337/quote",
-							"protocol": "http",
+							"raw": "{{baseURL}}/quote",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "1337",
 							"path": [
 								"quote"
 							]
@@ -138,82 +157,13 @@
 				}
 			],
 			"description": "Let's add more complexity to our API :D\n\nRequirements:\n\n- Set `Timestamp` , `Ref`, and `Signature` custom headers\n    \n- `Timestamp` must be within 10 second timeframe when server receives request.\n    \n- Each request must have a unique `Ref` value, also identifies the person testing the API.\n    \n- Each request must be signed using API key and set the signature in `Signature` header."
-		},
+		}
+	],
+	"variable": [
 		{
-			"name": "ping",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/ping",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"ping"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "test",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Signature",
-						"value": "your_signature_here",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "data",
-							"value": "foobar",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:5000/test",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"test"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ping",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1337/ping",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1337",
-					"path": [
-						"ping"
-					]
-				}
-			},
-			"response": []
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
 		}
 	]
 }
